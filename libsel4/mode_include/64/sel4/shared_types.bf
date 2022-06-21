@@ -30,3 +30,9 @@ block seL4_CNode_CapData {
     field guard 58
     field guardSize 6
 }
+
+-- Endoint cap data
+block seL4_Endpoint_CapData {
+    field badge 60
+    field rights 4
+}

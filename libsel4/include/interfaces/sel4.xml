@@ -372,6 +372,8 @@
                 description="Capability to the scheduling context that the TCB should run on. If the scheduling context is already bound to a notification or TCB that is not this TCB this operation will fail. Similarly, if this TCB is already bound to a scheduling context that is not this scheduling context, this will also fail."/>
             <param dir="in" name="fault_ep" type="seL4_CPtr"
                 description="CPTR to the endpoint which receives IPCs when this thread faults."/>
+            <param dir="in" name="fault_ep_data" type="seL4_Word"
+                description="Optionally set the badge and rights of the new faullt handler Endpoint. If set to zero, this parameter has no effect."/>
             <error name="seL4_IllegalOperation">
                 <description>
                     The <texttt text="_service"/> is a CPtr to a capability of the wrong type.
@@ -497,6 +499,8 @@
             </description>
             <param dir="in" name="fault_ep" type="seL4_CPtr"
                 description="CPTR to the endpoint which receives IPCs when this thread faults. On MCS this cap gets copied into the TCB."/>
+            <param dir="in" name="fault_root_data" type="seL4_Word"
+                description="Optionally set the badge and rights of the new fault handler endpoint. If set to zero, this parameter has no effect."/>
             <param dir="in" name="cspace_root" type="seL4_CNode"
                 description="The new CSpace root."/>
             <param dir="in" name="cspace_root_data" type="seL4_Word"
