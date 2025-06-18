@@ -798,7 +798,7 @@ static void invokeSetFlags(tcb_t *thread, word_t clear, word_t set, bool_t call)
     word_t flags = thread->tcbFlags;
 
     flags &= ~clear;
-    flags |= set & seL4_TCBFlag_MASK;
+    flags |= set & seL4_TCBFlag_MASK();
     thread->tcbFlags = flags;
 
 #ifdef CONFIG_HAVE_FPU

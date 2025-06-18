@@ -73,9 +73,17 @@ typedef enum {
 typedef enum {
     seL4_TCBFlag_NoFlag = 0x0,
     seL4_TCBFlag_fpuDisabled = 0x1,
-    seL4_TCBFlag_MASK = seL4_TCBFlag_NoFlag | seL4_TCBFlag_fpuDisabled,
     SEL4_FORCE_LONG_ENUM(seL4_TCBFlag),
 } seL4_TCBFlag;
+
+static inline seL4_TCBFlag seL4_TCBFlag_MASK(void)
+{
+#ifdef CONFIG_HAVE_FPU
+    return (seL4_TCBFlag_NoFlag | seL4_TCBFlag_fpuDisabled);
+#else
+    return seL4_TCBFlag_NoFlag;
+#endif
+}
 
 #endif /* !__ASSEMBLER__ */
 
